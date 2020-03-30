@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+ 
+    <!--
+    	See http://wiki.openmrs.org/display/docs/Module+liquibase+File for 
+    	documentation on this file.
+    
+        See http://www.liquibase.org/manual/home#available_database_refactorings
+        for a list of supported elements and attributes
+    -->
+
+ 	<!--
+	<changeSet id="enterprise-2016-08-02-12-21" author="raff">
+		<preConditions onFail="MARK_RAN">
+			<not><tableExists tableName="enterprise_item"/></not>
+		</preConditions>
+		<comment>
+			Creating the enterprise_item table
+		</comment>
+        <addForeignKeyConstraint constraintName="enterprise_item_owner_fk" baseTableName="enterprise_item" baseColumnNames="owner"  referencedTableName="users"
+                                 referencedColumnNames="user_id" />
+    </changeSet> -->
+
+    <changeSet id="enterprise-2020-03-10-12-20" author="test">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists tableName="enterprise"/></not>
+        </preConditions>
+        <comment>
+            Add enterprise table
+        </comment>
+        <createTable tableName="enterprise">
+            <column name="enterprise_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)" defaultValue="null"/>
+
+            <column name="address1" type="varchar(255)"/>
+            <column name="address2" type="varchar(255)"/>
+            <column name="city_village" type="varchar(255)"/>
+            <column name="state_province" type="varchar(255)"/>
+            <column name="postal_code" type="varchar(50)"/>
+            <column name="country" type="varchar(50)"/>
+            <column name="latitude" type="varchar(50)"/>
+            <column name="longitude" type="varchar(50)"/>
+            <column name="web" type="varchar(255)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="phone" type="varchar(255)"/>
+            <column name="fax" type="varchar(255)"/>
+            <column name="contact_person" type="varchar(255)"/>
+
+            <column defaultValueNumeric="0" name="creator" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date_created" type="datetime" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="retired" type="tinyint" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="retired_by" type="int(11)" />
+            <column name="date_retired" type="datetime" />
+            <column name="retired_reason" type="varchar(255)" defaultValue="null"/>
+            <column name="uuid" type="char(38)" />
+        </createTable>
+    </changeSet>
+    <changeSet id="enterprise-2020-03-10-12-21" author="test">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists tableName="enterprise_location_mapping"/></not>
+        </preConditions>
+        <comment>
+            Add enterprise_location_mapping table
+        </comment>
+        <createTable tableName="enterprise_location_mapping">
+            <column name="enterprise_location_mapping_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="enterprise_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location_id" type="int" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creator" type="int(11)" >
+                <constraints nullable="false" />
+            </column>
+            <column name="date_created" type="datetime" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="retired" type="tinyint" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="retired_by" type="int(11)" />
+            <column name="date_retired" type="datetime" />
+            <column name="retired_reason" type="varchar(255)" defaultValue="null"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
