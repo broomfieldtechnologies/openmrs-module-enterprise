@@ -71,7 +71,7 @@
             <column name="uuid" type="char(38)" />
         </createTable>
     </changeSet>
-    <changeSet id="enterprise-2020-03-10-12-21" author="test">
+ <!--    <changeSet id="enterprise-2020-03-10-12-21" author="test">
         <preConditions onFail="MARK_RAN">
             <not><tableExists tableName="enterprise_location_mapping"/></not>
         </preConditions>
@@ -101,5 +101,5 @@
             <column name="date_retired" type="datetime" />
             <column name="retired_reason" type="varchar(255)" defaultValue="null"/>
         </createTable>
-    </changeSet>
+    </changeSet> -->
 </databaseChangeLog>

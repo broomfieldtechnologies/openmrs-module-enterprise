@@ -10,7 +10,7 @@
 package org.openmrs.module.enterprise;
 
 import org.openmrs.BaseOpenmrsData;
-import org.openmrs.Location;
+
 import org.openmrs.User;
 
 import javax.persistence.Basic;
@@ -18,9 +18,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
@@ -38,9 +35,9 @@ public class Enterprise extends BaseOpenmrsData {
 	@Column(name = "enterprise_id")
 	private Integer id;
 	
-	@ManyToMany
-	@JoinTable(name = "enterprise_location_mapping", joinColumns = { @JoinColumn(name = "enterprise_id") }, inverseJoinColumns = { @JoinColumn(name = "location_id") })
-	private Set<Location> locations = new HashSet<Location>();
+	//	@ManyToMany
+	//	@JoinTable(name = "enterprise_location_mapping", joinColumns = { @JoinColumn(name = "enterprise_id") }, inverseJoinColumns = { @JoinColumn(name = "location_id") })
+	//	private Set<Location> locations = new HashSet<Location>();
 	
 	/*
 	@ManyToOne
@@ -121,17 +118,17 @@ public class Enterprise extends BaseOpenmrsData {
 		this.description = description;
 	}
 	
-	public void addLocation(Location location) {
-		this.getLocations().add(location);
-	}
-	
-	public Set<Location> getLocations() {
-		return locations;
-	}
-	
-	public void setLocations(Set<Location> locations) {
-		this.locations = locations;
-	}
+	//	public void addLocation(Location location) {
+	//		this.getLocations().add(location);
+	//	}
+	//	
+	//	public Set<Location> getLocations() {
+	//		return locations;
+	//	}
+	//	
+	//	public void setLocations(Set<Location> locations) {
+	//		this.locations = locations;
+	//	}
 	
 	public String getName() {
 		return name;
