@@ -71,6 +71,21 @@
             <column name="uuid" type="char(38)" />
         </createTable>
     </changeSet>
+    
+     <changeSet id="update-enterprise-2020-04-21-12-20" author="test">
+        <comment>
+            Update enterprise table
+        </comment>
+        <addColumn tableName="enterprise">
+        	<column name="changed_by" type="int(11)" defaultValue="null" />
+        	<column name="date_changed" type="datetime" defaultValue="null" />
+        	<column name="voided" type="tinyint(1)" defaultValue="0" />
+        	<column name="voided_by" type="int(11)" defaultValue="null" />
+        	<column name="date_voided" type="datetime" defaultValue="null" />
+        	<column name="void_reason" type="varchar(255)" defaultValue="null" />
+         </addColumn>
+    </changeSet>
+    
  <!--    <changeSet id="enterprise-2020-03-10-12-21" author="test">
         <preConditions onFail="MARK_RAN">
             <not><tableExists tableName="enterprise_location_mapping"/></not>

@@ -9,18 +9,14 @@
  */
 package org.openmrs.module.enterprise;
 
-import org.openmrs.BaseOpenmrsData;
-
-import org.openmrs.User;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
+
+import org.openmrs.BaseOpenmrsData;
 
 /**
  * Please note that a corresponding table schema must be created in liquibase.xml.
@@ -72,8 +68,8 @@ public class Enterprise extends BaseOpenmrsData {
 	@Column(name = "longitude")
 	private String longitude;
 	
-	@Column(name = "lattitude")
-	private String lattitude;
+	@Column(name = "latitude")
+	private String latitude;
 	
 	@Column(name = "country")
 	private String country;
@@ -186,12 +182,12 @@ public class Enterprise extends BaseOpenmrsData {
 		this.longitude = longitude;
 	}
 	
-	public String getLattitude() {
-		return lattitude;
+	public String getLatitude() {
+		return latitude;
 	}
 	
-	public void setLattitude(String lattitude) {
-		this.lattitude = lattitude;
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
 	}
 	
 	public String getCountry() {
