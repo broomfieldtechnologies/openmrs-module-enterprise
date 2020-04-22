@@ -9,21 +9,14 @@
  */
 package org.openmrs.module.enterprise;
 
-import org.openmrs.BaseOpenmrsData;
-import org.openmrs.Location;
-import org.openmrs.User;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
+
+import org.openmrs.BaseOpenmrsData;
 
 /**
  * Please note that a corresponding table schema must be created in liquibase.xml.
@@ -38,15 +31,6 @@ public class Enterprise extends BaseOpenmrsData {
 	@Column(name = "enterprise_id")
 	private Integer id;
 	
-	@ManyToMany
-	@JoinTable(name = "enterprise_location_mapping", joinColumns = { @JoinColumn(name = "enterprise_id") }, inverseJoinColumns = { @JoinColumn(name = "location_id") })
-	private Set<Location> locations = new HashSet<Location>();
-	
-	/*
-	@ManyToOne
-	@JoinColumn(name = "owner")
-	private User owner;
-	*/
 	@Basic
 	@Column(name = "name", length = 255)
 	private String name;
@@ -75,8 +59,8 @@ public class Enterprise extends BaseOpenmrsData {
 	@Column(name = "longitude")
 	private String longitude;
 	
-	@Column(name = "lattitude")
-	private String lattitude;
+	@Column(name = "latitude")
+	private String latitude;
 	
 	@Column(name = "country")
 	private String country;
@@ -119,18 +103,6 @@ public class Enterprise extends BaseOpenmrsData {
 	
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	
-	public void addLocation(Location location) {
-		this.getLocations().add(location);
-	}
-	
-	public Set<Location> getLocations() {
-		return locations;
-	}
-	
-	public void setLocations(Set<Location> locations) {
-		this.locations = locations;
 	}
 	
 	public String getName() {
@@ -189,12 +161,12 @@ public class Enterprise extends BaseOpenmrsData {
 		this.longitude = longitude;
 	}
 	
-	public String getLattitude() {
-		return lattitude;
+	public String getLatitude() {
+		return latitude;
 	}
 	
-	public void setLattitude(String lattitude) {
-		this.lattitude = lattitude;
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
 	}
 	
 	public String getCountry() {

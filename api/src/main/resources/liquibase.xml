@@ -13,18 +13,6 @@
         for a list of supported elements and attributes
     -->
 
- 	<!--
-	<changeSet id="enterprise-2016-08-02-12-21" author="raff">
-		<preConditions onFail="MARK_RAN">
-			<not><tableExists tableName="enterprise_item"/></not>
-		</preConditions>
-		<comment>
-			Creating the enterprise_item table
-		</comment>
-        <addForeignKeyConstraint constraintName="enterprise_item_owner_fk" baseTableName="enterprise_item" baseColumnNames="owner"  referencedTableName="users"
-                                 referencedColumnNames="user_id" />
-    </changeSet> -->
-
     <changeSet id="enterprise-2020-03-10-12-20" author="test">
         <preConditions onFail="MARK_RAN">
             <not><tableExists tableName="enterprise"/></not>
@@ -71,35 +59,19 @@
             <column name="uuid" type="char(38)" />
         </createTable>
     </changeSet>
-    <changeSet id="enterprise-2020-03-10-12-21" author="test">
-        <preConditions onFail="MARK_RAN">
-            <not><tableExists tableName="enterprise_location_mapping"/></not>
-        </preConditions>
+    
+     <changeSet id="update-enterprise-2020-04-21-12-20" author="test">
         <comment>
-            Add enterprise_location_mapping table
+            Update enterprise table
         </comment>
-        <createTable tableName="enterprise_location_mapping">
-            <column name="enterprise_location_mapping_id" type="int" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="enterprise_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="location_id" type="int" defaultValueNumeric="0">
-                <constraints nullable="false"/>
-            </column>
-            <column name="creator" type="int(11)" >
-                <constraints nullable="false" />
-            </column>
-            <column name="date_created" type="datetime" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="retired" type="tinyint" defaultValueNumeric="0">
-                <constraints nullable="false"/>
-            </column>
-            <column name="retired_by" type="int(11)" />
-            <column name="date_retired" type="datetime" />
-            <column name="retired_reason" type="varchar(255)" defaultValue="null"/>
-        </createTable>
+        <addColumn tableName="enterprise">
+        	<column name="changed_by" type="int(11)" defaultValue="null" />
+        	<column name="date_changed" type="datetime" defaultValue="null" />
+        	<column name="voided" type="tinyint(1)" defaultValue="0" />
+        	<column name="voided_by" type="int(11)" defaultValue="null" />
+        	<column name="date_voided" type="datetime" defaultValue="null" />
+        	<column name="void_reason" type="varchar(255)" defaultValue="null" />
+         </addColumn>
     </changeSet>
+    
 </databaseChangeLog>
