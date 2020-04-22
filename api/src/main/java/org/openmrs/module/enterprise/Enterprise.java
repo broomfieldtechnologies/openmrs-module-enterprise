@@ -31,15 +31,6 @@ public class Enterprise extends BaseOpenmrsData {
 	@Column(name = "enterprise_id")
 	private Integer id;
 	
-	//	@ManyToMany
-	//	@JoinTable(name = "enterprise_location_mapping", joinColumns = { @JoinColumn(name = "enterprise_id") }, inverseJoinColumns = { @JoinColumn(name = "location_id") })
-	//	private Set<Location> locations = new HashSet<Location>();
-	
-	/*
-	@ManyToOne
-	@JoinColumn(name = "owner")
-	private User owner;
-	*/
 	@Basic
 	@Column(name = "name", length = 255)
 	private String name;
@@ -113,18 +104,6 @@ public class Enterprise extends BaseOpenmrsData {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	//	public void addLocation(Location location) {
-	//		this.getLocations().add(location);
-	//	}
-	//	
-	//	public Set<Location> getLocations() {
-	//		return locations;
-	//	}
-	//	
-	//	public void setLocations(Set<Location> locations) {
-	//		this.locations = locations;
-	//	}
 	
 	public String getName() {
 		return name;
