@@ -73,5 +73,22 @@
         	<column name="void_reason" type="varchar(255)" defaultValue="null" />
          </addColumn>
     </changeSet>
+
+	<changeSet id="update-enterprise-2020-09-09" author="test">
+		<comment>
+            Update enterprise table2
+        </comment>
+		<addColumn tableName="enterprise">
+			<column name="parent_enterprise_id" type="int" defaultValue="null" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="update-enterprise-2020-09-09-02" author="test">
+	<comment>
+            Update enterprise table3
+        </comment>
+	<addForeignKeyConstraint baseColumnNames="parent_enterprise_id" baseTableName="enterprise"
+		constraintName="fk_parent_enterprise_id" referencedColumnNames="enterprise_id" referencedTableName="enterprise" />
+</changeSet>
     
 </databaseChangeLog>

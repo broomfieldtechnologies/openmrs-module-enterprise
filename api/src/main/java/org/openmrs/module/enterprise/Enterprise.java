@@ -9,11 +9,18 @@
  */
 package org.openmrs.module.enterprise;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.openmrs.BaseOpenmrsData;
@@ -76,6 +83,16 @@ public class Enterprise extends BaseOpenmrsData {
 	
 	@Column(name = "contact_person")
 	private String contactPerson;
+	
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "parent_enterprise_id")
+	private Enterprise parentEnterprise;
+	
+	@OneToMany(mappedBy = "parentEnterprise")
+	private Set<Enterprise> childEnterprises = new HashSet<Enterprise>();
+	
+	public Enterprise() {
+	}
 	
 	@Override
 	public Integer getId() {
